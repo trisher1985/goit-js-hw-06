@@ -1,67 +1,56 @@
 'use strict';
 
-// Задача 3. Профіль гравця
+// Модуль 6. Задача 3. 
+
+// Конструктор рядків
+
+
+
 // Виконуй це завдання у файлі task-3.js
-// Об’єкт profile описує профіль користувача на ігровій платформі. 
-// У його властивостях зберігається ім’я профілю username та кількість
-//  активних годин playTime, проведених у грі.
-
-// const profile = {
-//     username: "Jacob",
-//   playTime: 300,
-// };
-
-// Доповни об’єкт profile методами для роботи з його властивостями.
-
-// Метод changeUsername(newName) повинен приймати рядок (нове ім’я) в параметр newName та змінювати значення властивості username на нове. Нічого не повертає.
-// Метод updatePlayTime(hours) повинен приймати число (кількість годин) у параметр hours та збільшити на нього значення властивості playTime. Нічого не повертає.
-// Метод getInfo() має повертати рядок формату <Username> has <amount> active hours!, де <Username> — це ім’я профілю, а <amount> — кількість ігрових годин.
-// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
 
 
-// console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+// Напиши клас StringBuilder, який приймає один параметр initialValue — довільний рядок, який записується у приватну властивість value об'єкта, що створюється.
 
-// profile.changeUsername("Marco");
-// console.log(profile.getInfo()); // "Marco has 300 active hours!"
 
-// profile.updatePlayTime(20);
-// console.log(profile.getInfo()); // "Marco has 320 active hours!"
+
+// Оголоси наступні методи класу:
+
+// getValue() — повертає поточне значення приватної властивості value.
+// padEnd(str) — отримує параметр str (рядок) і додає його в кінець значення приватної властивості value об'єкта, який викликає цей метод.
+// padStart(str) — отримує параметр str (рядок) і додає його на початок значення приватної властивості value об'єкта, який викликає цей метод.
+// padBoth(str) — отримує параметр str (рядок) і додає його на початок і в кінець значення приватної властивості value об'єкта, який викликає цей метод.
+// Візьми код нижче з ініціалізацією екземпляра й викликами методів і встав його після оголошення класу для перевірки коректності роботи. У консоль будуть виведені результати їх роботи. Будь ласка, нічого там не змінюй.
+
+
+
+// const builder = new StringBuilder(".");
+// console.log(builder.getValue()); // "."
+// builder.padStart("^");
+// console.log(builder.getValue()); // "^."
+// builder.padEnd("^");
+// console.log(builder.getValue()); // "^.^"
+// builder.padBoth("=");
+// console.log(builder.getValue()); // "=^.^="
 
 // Залиш цей код для перевірки ментором.
 
+
+
 // На що буде звертати увагу ментор при перевірці:
-// Оголошена змінна profile
-// Значення змінної profile — це об’єкт з властивостями username, playTime, getInfo, changeUsername і updatePlayTime
-// Значення властивості getInfo — це функція
-// Значення властивості changeUsername — це функція
-// Значення властивості updatePlayTime — це функція
-// Для звернення до властивостей об’єкта в його методах використовується this
 
-const profile = {
-    username: "Jacob",
-    playTime: 300,
-
-    // зміна імені користувача
-    changeUsername(newName) {
-        this.username = newName;
-    },
-
-    // оновлення кількості ігрових годин
-    updatePlayTime(hours) {
-        this.playTime += hours;
-    },
-
-    // просте отримання інформації про профіль
-    getInfo() {
-        return `${this.username} has ${this.playTime} active hours!`;
-    }
-};
-
-// Перевірка роботи методів
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
-
-profile.changeUsername("Marco");
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
-
-profile.updatePlayTime(20);
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
+// Оголошений клас StringBuilder
+// Властивість value у класі StringBuilder оголошена приватною
+// У класі StringBuilder оголошений метод getValue
+// Метод getValue повертає значення приватної властивості value екземпляра класу, який його викликає
+// У класі StringBuilder оголошений метод padEnd
+// Метод padEnd змінює значення приватної властивості value екземпляра класу, який його викликає
+// У класі StringBuilder оголошений метод padStart
+// Метод padStart змінює приватну властивість value екземпляра класу, який його викликає
+// У класі StringBuilder оголошений метод padBoth
+// Метод padBoth змінює значення приватної властивості value екземпляра класу, який його викликає
+// У результаті виклику new StringBuilder(".") значення приватної змінної builder — це об'єкт
+// Об'єкт builder не містить публічну властивість value
+// Перший виклик builder.getValue() одразу після ініціалізації екземпляра повертає рядок .
+// Другий виклик builder.getValue() після виклику builder.padStart("^") повертає рядок ^.
+// Третій виклик builder.getValue() після виклику builder.padEnd("^") повертає рядок ^.^
+// Четвертий виклик builder.getValue() після виклику builder.padBoth("=") повертає рядок =^.^=

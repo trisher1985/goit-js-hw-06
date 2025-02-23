@@ -1,106 +1,54 @@
 'use strict';
 
-// Задача 2. Розрахунок калорій
+// Модуль 6. Задача 2. Склад
+
+
+
 // Виконуй це завдання у файлі task-2.js
-// Напиши функцію calcAverageCalories(days), яка повертає середньодобове 
-// значення кількості калорій, які спортсмен споживав протягом тижня. 
-// Функція очікує один параметр: days — масив об’єктів. Кожен об’єкт описує 
-// день тижня та кількість калорій calories, спожитих спортсменом, у цей день. 
-// Візьми код нижче і встав після оголошення своєї функції для перевірки 
-// коректності її роботи. У консоль будуть виведені результати її викликів.
 
-// console.log(
-//   calcAverageCalories([
-//     { day: "monday", calories: 3010 },
-//     { day: "tuesday", calories: 3200 },
-//     { day: "wednesday", calories: 3120 },
-//     { day: "thursday", calories: 2900 },
-//     { day: "friday", calories: 3450 },
-//     { day: "saturday", calories: 3280 },
-//     { day: "sunday", calories: 3300 }
-//   ])); // 3180
 
-// console.log(
-//   calcAverageCalories([
-//     { day: "monday", calories: 2040 },
-//     { day: "tuesday", calories: 2270 },
-//     { day: "wednesday", calories: 2420 },
-//     { day: "thursday", calories: 1900 },
-//     { day: "friday", calories: 2370 },
-//     { day: "saturday", calories: 2280 },
-//     { day: "sunday", calories: 2610 }
-//   ])); // 2270
+// Створи клас Storage, який створюватиме об'єкти для управління складом товарів. Клас очікує лише один аргумент — початковий масив товарів, який записується до створеного об'єкта в приватну властивість items.
 
-// console.log(
-//   calcAverageCalories([])); // 0
+// Оголоси наступні методи класу:
+
+// getItems() — повертає масив поточних товарів у приватній властивості items.
+// addItem(newItem) — приймає новий товар newItem і додає його до масиву товарів у приватну властивість items об'єкта.
+// removeItem(itemToRemove) — приймає рядок з назвою товару itemToRemove і видаляє його з масиву товарів у приватній властивості items об'єкта.
+
+
+// Візьми код нижче з ініціалізацією екземпляра й викликами методів і встав його після оголошення класу для перевірки коректності роботи. У консоль будуть виведені результати їх роботи. Будь ласка, нічого там не змінюй.
+
+
+
+// const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+
+// storage.addItem("Droid");
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+
+// storage.removeItem("Prolonger");
+// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+// storage.removeItem("Scaner");
+// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
 
 // Залиш цей код для перевірки ментором.
 
+
+
 // На що буде звертати увагу ментор при перевірці:
-// Оголошена функція calcAverageCalories(days)
-// Такий виклик функції calcAverageCalories повертає 3180
-// calcAverageCalories([
-//   { day: "monday", calories: 3010 },
-//   { day: "tuesday", calories: 3200 },
-//   { day: "wednesday", calories: 3120 },
-//   { day: "thursday", calories: 2900 },
-//   { day: "friday", calories: 3450 },
-//   { day: "saturday", calories: 3280 },
-//   { day: "sunday", calories: 3300 }
-// ])
 
-// Такий виклик функції calcAverageCalories повертає 2270
-// calcAverageCalories([
-//   { day: "monday", calories: 2040 },
-//   { day: "tuesday", calories: 2270 },
-//   { day: "wednesday", calories: 2420 },
-//   { day: "thursday", calories: 1900 },
-//   { day: "friday", calories: 2370 },
-//   { day: "saturday", calories: 2280 },
-//   { day: "sunday", calories: 2610 }
-// ])
-
-// Такий виклик функції calcAverageCalories повертає 0
-// calcAverageCalories([])
-
-
-function calcAverageCalories(days) {
-    // для обробки випадку, коли спортсмен не споживав калорій протягом тижня (або коли дані відсутні)
-    if (days.length === 0) {
-    return 0;
-    }
-    // тобто, коли days.length = 0 маємо порожній масив - треба уникнути ділення на 0... 
-    // коли масив містить дані:
-    let totalCalories = 0;
-    for (const day of days) {
-    totalCalories += day.calories;
-    }
-    const averageCalories = totalCalories / days.length;
-    return Math.round(averageCalories);
-}
-  // Перевірка коректності роботи функції
-console.log(
-    calcAverageCalories([
-    { day: "monday", calories: 3010 },
-    { day: "tuesday", calories: 3200 },
-    { day: "wednesday", calories: 3120 },
-    { day: "thursday", calories: 2900 },
-    { day: "friday", calories: 3450 },
-    { day: "saturday", calories: 3280 },
-    { day: "sunday", calories: 3300 }
-    ])
-  ); // 3180
-console.log(
-    calcAverageCalories([
-    { day: "monday", calories: 2040 },
-    { day: "tuesday", calories: 2270 },
-    { day: "wednesday", calories: 2420 },
-    { day: "thursday", calories: 1900 },
-    { day: "friday", calories: 2370 },
-    { day: "saturday", calories: 2280 },
-    { day: "sunday", calories: 2610 }
-    ])
-  ); // 2270
-console.log(
-    calcAverageCalories([])
-  ); // 0
+// Оголошений клас Storage
+// У класі Storage оголошений метод getItems
+// У класі Storage оголошений метод addItem
+// У класі Storage оголошений метод removeItem
+// Властивість items у класі Storage оголошена приватною
+// Метод getItems повертає значення приватної властивості items екземпляра класу, який його викликає
+// Метод addItem змінює значення приватної властивості items екземпляра класу, який його викликає
+// Метод removeItem змінює значення приватної властивості items екземпляра класу, який його викликає
+// У результаті виклику new Storage(["Nanitoids", "Prolonger", "Antigravitator"]) значення змінної storage — це об'єкт
+// У об’єкта storage немає публічної властивості items
+// Перший виклик storage.getItems() одразу після ініціалізації екземпляра повертає масив ["Nanitoids", "Prolonger", "Antigravitator"]
+// Другий виклик storage.getItems() після виклику storage.addItem("Droid") повертає масив ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+// Третій виклик storage.getItems() після виклику storage.removeItem("Prolonger") повертає масив ["Nanitoids", "Antigravitator", "Droid"]
+// Четвертий виклик storage.getItems() після виклику storage.removeItem("Scaner") повертає масив ["Nanitoids", "Antigravitator", "Droid"]

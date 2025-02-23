@@ -1,61 +1,65 @@
 'use strict';
 
 
-// /Задача 1. Пакування товарів
+// Модуль 6. Задача 1. Акаунт користувача
+
+
+
 // Виконуй це завдання у файлі task-1.js
-// Напиши функцію isEnoughCapacity(products, containerSize), яка обчислює, 
-// чи помістяться всі товари в контейнер при пакуванні.
 
-// Функція оголошує два параметри:
 
-// products — об’єкт, у якому ключі містять назви товарів, а їхні значення — кількість цих товарів.
-//  Наприклад, { apples: 2, grapes: 4 }.
-// containerSize — число, максимальна кількість одиниць товарів, яку в себе може вмістити контейнер.
-// Функція має повернути результат перевірки, чи помістяться всі товари в контейнер. Тобто порахувати
-//  загальну кількість товарів в об’єкті products і повернути true, якщо вона менше або дорівнює 
-// containerSize, і false, якщо ні.
+// Перед звільненням розробник зламав вихідний код управління акаунтами користувачів нашого сервісу доставки їжі. Виконай рефакторинг методів об'єкта customer, розставивши відсутні this під час звернення до властивостей об'єкта.
 
-// Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. 
-// У консоль будуть виведені результати її викликів.
+// Використай цей стартовий код і виконай рефакторинг. Після оголошення об'єкта ми додали виклики методів. У консоль будуть виведені результати їх роботи. Будь ласка, нічого там не змінюй.
 
-// console.log(
-//   isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)); // true
 
-// console.log(
-//   isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)); // false
 
-// console.log(
-//   isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)); // true
+// const customer = {
+//   username: "Mango",
+//   balance: 24000,
+//   discount: 0.1,
+//   orders: ["Burger", "Pizza", "Salad"],
+//   // Change code below this line
+//   getBalance() {
+//     return balance;
+//   },
+//   getDiscount() {
+//     return discount;
+//   },
+//   setDiscount(value) {
+//     discount = value;
+//   },
+//   getOrders() {
+//     return orders;
+//   },
+//   addOrder(cost, order) {
+//     balance -= cost - cost * discount;
+//     orders.push(order);
+//   },
+//   // Change code above this line
+// };
 
-// console.log(
-//   isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)); // false
+// customer.setDiscount(0.15);
+// console.log(customer.getDiscount()); // 0.15
+// customer.addOrder(5000, "Steak");
+// console.log(customer.getBalance()); // 19750
+// console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
 
 // Залиш цей код для перевірки ментором.
 
+
+
 // На що буде звертати увагу ментор при перевірці:
-// Оголошена функція isEnoughCapacity(products, containerSize)
-// Виклик isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8) повертає true
-// Виклик isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12) повертає false
-// Виклик isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14) повертає true
-// Виклик isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7) повертає false
 
-function isEnoughCapacity(products, containerSize) {
-    let total = 0;
-    for (const key in products) {
-    if (products.hasOwnProperty(key) && typeof products[key] === "number") 
-        // метод hasOwnProperty, щоб переконатися,  що враховуються  
-        // лише власні властивості об'єкта products, а не успадковані.
-        {
-        total += products[key];
-    }
-    }
-    return total <= containerSize;
-    // замість використання if...else для повернення результату, використовується 
-    // одне порівняння total <= containerSize, що робить код коротшим
-
-}
-
-console.log(isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)); // true
-console.log(isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)); // false
-console.log(isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)); // true
-console.log(isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)); // false
+// Оголошена змінна customer
+// Значення змінної customer — це об'єкт із властивостями та методами
+// Виклик customer.getDiscount() повертає поточне значення властивості discount
+// Виклик customer.setDiscount(0.15) оновлює значення властивості discount
+// Виклик customer.getBalance() повертає поточне значення властивості balance.
+// Виклик customer.getOrders() повертає поточне значення властивості orders
+// Виклик customer.addOrder(5000, "Steak") додає "Steak" у масив значень властивості orders та оновлює баланс
+// Метод getBalance об'єкта customer використовує this
+// Метод getDiscount об'єкта customer використовує this
+// Метод setDiscount об'єкта customer використовує this
+// Метод getOrders об'єкта customer використовує this
+// Метод addOrder об'єкта customer використовує this
