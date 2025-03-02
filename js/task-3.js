@@ -54,3 +54,45 @@
 // Другий виклик builder.getValue() після виклику builder.padStart("^") повертає рядок ^.
 // Третій виклик builder.getValue() після виклику builder.padEnd("^") повертає рядок ^.^
 // Четвертий виклик builder.getValue() після виклику builder.padBoth("=") повертає рядок =^.^=
+
+
+class StringBuilder {
+    // Приватна властивість value. оголошуємо за допомогою синтаксису #, що робить її приватною. 
+    // Це означає, що до неї неможливо отримати доступ ззовні класу
+    #value;
+
+    // Конструктор приймає initialValue та ініціалізує приватну властивість value
+    constructor(initialValue) {
+    this.#value = initialValue;
+    }
+
+    // Метод getValue повертає поточне значення #value
+    getValue() {
+    return this.#value;
+    }
+
+    // Метод padEnd, який додає str в кінець #value
+    padEnd(str) {
+    this.#value += str;
+    }
+
+    // Метод padStart додає str на початок #value
+    padStart(str) {
+    this.#value = str + this.#value;
+    }
+
+    // Метод padBoth додає str на початок і в кінець #value
+    padBoth(str) {
+    this.#value = str + this.#value + str;
+    }
+}
+
+  // Перевірка роботи класу
+const builder = new StringBuilder(".");
+  console.log(builder.getValue()); // "."
+builder.padStart("^");
+  console.log(builder.getValue()); // "^."
+builder.padEnd("^");
+  console.log(builder.getValue()); // "^.^"
+builder.padBoth("=");
+  console.log(builder.getValue()); // "=^.^="

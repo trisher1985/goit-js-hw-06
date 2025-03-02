@@ -52,3 +52,41 @@
 // Другий виклик storage.getItems() після виклику storage.addItem("Droid") повертає масив ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
 // Третій виклик storage.getItems() після виклику storage.removeItem("Prolonger") повертає масив ["Nanitoids", "Antigravitator", "Droid"]
 // Четвертий виклик storage.getItems() після виклику storage.removeItem("Scaner") повертає масив ["Nanitoids", "Antigravitator", "Droid"]
+
+class Storage {
+    // властивість, де зберігаємо товари
+    #items;
+
+    constructor(initialItems) {
+    this.#items = initialItems;
+    }
+
+    // Метод, де отримуємо поточний масив товарів
+    getItems() {
+    return this.#items;
+    }
+
+    // Метод, де додаємо новий товар
+    addItem(newItem) {
+    this.#items.push(newItem);
+    }
+
+    // Метод, де видаляємо товар
+    removeItem(itemToRemove) {
+    this.#items = this.#items.filter(item => item !== itemToRemove);
+    }
+}
+
+  // Перевіряємо роботу класу
+const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+  console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+
+storage.addItem("Droid");
+  console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+
+storage.removeItem("Prolonger");
+  console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+storage.removeItem("Scaner");
+  console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
